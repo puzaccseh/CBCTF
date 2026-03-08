@@ -1,0 +1,7 @@
+CBCTF{lfi_file_read}
+
+# This file should NOT be web-accessible via normal routes.
+# It is only reachable by exploiting the Local File Inclusion vulnerability
+# at /academy/content?page=../../flags/lfi.txt
+#
+# Challenge: LFI via path traversal in the Academy content viewer.

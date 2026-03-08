@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title: 'Login - Cyber Bangla CTF'}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">Access Required</div>
+        <h1 class="page-hero-title">Login</h1>
+        <p class="page-hero-sub">Access your Cyber Bangla CTF account to continue learning and solving challenges.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="auth-form-wrap">
+            <div class="card" style="max-width:400px; margin:0 auto;">
+                <h2 class="form-section-title">Login</h2>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                <div class="error-message" style="color:#ff4444; margin-bottom:1rem; padding:0.5rem; background:#ffeaea; border-radius:4px;">
+                    <%= error %>
+                </div>
+                <% } %>
+                <% if (typeof success !== 'undefined' && success) { %>
+                <div class="success-message" style="color:#00ffcc; margin-bottom:1rem; padding:0.5rem; background:#1a2e4a; border-radius:4px;">
+                    <%= success %>
+                </div>
+                <% } %>
+
+                <form action="/login" method="POST" class="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required
+                               placeholder="Enter your username" class="form-input" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required
+                               placeholder="Enter your password" class="form-input" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+
+                <div class="auth-links" style="text-align:center; margin-top:1.5rem;">
+                    <p style="color:#8ba3c7;">Don't have an account? <a href="/signup" style="color:#00ffcc;">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

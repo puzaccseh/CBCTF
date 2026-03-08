@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">Knowledge Base</div>
+        <h1 class="page-hero-title">Cyber Bangla Blog</h1>
+        <p class="page-hero-sub">Threat intelligence, original research, and hands-on security insights from our team.</p>
+    </div>
+</section>
+
+<!-- Category filter strip -->
+<div style="background:rgba(10,18,33,0.95); border-bottom:1px solid var(--border-subtle); padding:0.75rem 0; position:sticky; top:64px; z-index:90;">
+    <div class="container" style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
+        <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em; margin-right:0.5rem;">Filter:</span>
+        <a href="#" class="blog-tag" style="background:rgba(0,255,204,0.12); text-decoration:none;">All</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Web Security</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Cloud</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Malware</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Red Team</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Research</a>
+        <a href="#" class="blog-tag" style="text-decoration:none; background:transparent; color:var(--text-secondary);">Compliance</a>
+    </div>
+</div>
+
+<!-- Main two-column layout -->
+<section class="section">
+    <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 310px; gap:3rem; align-items:start;">
+
+            <!-- ══ LEFT: Articles ════════════════════════════════════════ -->
+            <div>
+
+                <!-- Featured post -->
+                <article class="blog-full-card featured" style="margin-bottom:2rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.9rem;">
+                        <span class="blog-tag">★ Featured</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">Web Security</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">XSS</span>
+                    </div>
+                    <h2 style="font-size:1.5rem; line-height:1.3; margin-bottom:0.6rem;">The Rise of DOM XSS in Modern Single-Page Applications</h2>
+                    <div class="blog-meta" style="display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1.1rem; align-items:center;">
+                        <span style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="width:28px; height:28px; background:linear-gradient(135deg,#00ffcc,#0066ff); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:800; color:#0a1221;">NA</span>
+                            Nasrin Akhter &nbsp;<span style="color:var(--text-dim);">— Senior AppSec Researcher</span>
+                        </span>
+                        <span>📅 Oct 12, 2025</span>
+                        <span>⏱ 8 min read</span>
+                        <span style="color:var(--text-dim);">👁 4,831</span>
+                    </div>
+                    <p>As JavaScript frameworks like React, Vue, and Angular become the standard for web development, a class of vulnerability that was once considered niche has exploded in prevalence: <strong style="color:var(--accent-teal);">DOM-based cross-site scripting</strong>. Unlike reflected or stored XSS — which require the server to echo unsanitised content — DOM XSS lives entirely in the browser, making it invisible to WAFs and server-side scanners.</p>
+                    <p>The root cause is almost always the same: a developer reads from an attacker-controlled source (<code>location.hash</code>, <code>document.referrer</code>, <code>window.name</code>) and writes directly to a dangerous sink (<code>innerHTML</code>, <code>document.write</code>, <code>eval</code>) without any sanitisation step in between. In SPAs this pattern is especially common in client-side routing code.</p>
+                    <div style="background:rgba(0,255,204,0.05); border-left:3px solid var(--accent-teal); padding:1rem 1.25rem; border-radius:0 var(--radius) var(--radius) 0; margin:1.2rem 0; font-size:0.92rem; color:var(--text-secondary);">
+                        <strong style="color:var(--text-primary);">Key finding:</strong> In our 2025 red team assessments, 61% of DOM XSS vulnerabilities were introduced by a single developer pattern — passing <code>location.search</code> directly into a React component's <code>dangerouslySetInnerHTML</code> prop.
+                    </div>
+                    <p>Modern tooling provides partial protection — frameworks escape output by default — but "escape hatches" such as <code>dangerouslySetInnerHTML</code> and direct DOM manipulation via <code>useRef</code> create blind spots that automated scanners miss entirely…</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.2rem; flex-wrap:wrap; gap:0.75rem;">
+                        <a href="#comments" class="blog-link" style="font-size:0.9rem;">Read full article →</a>
+                        <div style="font-size:0.8rem; color:var(--text-dim); display:flex; gap:1.1rem;">
+                            <a href="#comments" style="color:var(--text-dim); text-decoration:none;">💬 23 comments</a>
+                            <a href="#" style="color:var(--text-dim); text-decoration:none;">🔗 Share</a>
+                            <a href="#" style="color:var(--text-dim); text-decoration:none;">🔖 Save</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-full-card" style="margin-bottom:2rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.9rem;">
+                        <span class="blog-tag" style="color:#60a5fa; background:rgba(96,165,250,0.08); border-color:rgba(96,165,250,0.2);">Cloud Security</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">AWS</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">Misconfiguration</span>
+                    </div>
+                    <h2>Misconfigured AWS S3 Buckets: Field Notes from 50+ Assessments</h2>
+                    <div class="blog-meta" style="display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1rem; align-items:center;">
+                        <span style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="width:28px; height:28px; background:linear-gradient(135deg,#60a5fa,#8b5cf6); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:800; color:#fff;">TH</span>
+                            Tanvir Hassan &nbsp;<span style="color:var(--text-dim);">— Cloud Security Lead</span>
+                        </span>
+                        <span>📅 Oct 8, 2025</span>
+                        <span>⏱ 12 min read</span>
+                        <span style="color:var(--text-dim);">👁 7,204</span>
+                    </div>
+                    <p>During 2024–2025, our cloud security team assessed over 50 Bangladeshi enterprise AWS environments. In <strong style="color:var(--text-primary);">73% of cases</strong> we discovered at least one publicly readable S3 bucket containing sensitive data — PII, internal API keys, database backups, or financial records. The pattern is depressingly consistent.</p>
+                    <p>The three most common root causes: (1) console-created buckets with "Block Public Access" accidentally disabled, (2) Terraform modules copied from outdated tutorials with <code>acl = "public-read"</code> hardcoded, and (3) CI/CD pipelines that push build artefacts and grant <code>s3:GetObject</code> to <code>*</code> to avoid IAM complexity.</p>
+                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.25rem 0;">
+                        <div style="background:rgba(13,26,46,0.8); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1rem; text-align:center;">
+                            <div style="font-size:1.55rem; font-weight:800; color:var(--accent-teal); font-family:var(--font-mono);">73%</div>
+                            <div style="font-size:0.77rem; color:var(--text-dim); margin-top:0.3rem;">Had exposed bucket</div>
+                        </div>
+                        <div style="background:rgba(13,26,46,0.8); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1rem; text-align:center;">
+                            <div style="font-size:1.55rem; font-weight:800; color:#f59e0b; font-family:var(--font-mono);">41%</div>
+                            <div style="font-size:0.77rem; color:var(--text-dim); margin-top:0.3rem;">PII in plaintext</div>
+                        </div>
+                        <div style="background:rgba(13,26,46,0.8); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1rem; text-align:center;">
+                            <div style="font-size:1.55rem; font-weight:800; color:#f87171; font-family:var(--font-mono);">18%</div>
+                            <div style="font-size:0.77rem; color:var(--text-dim); margin-top:0.3rem;">Exposed API keys</div>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.75rem;">
+                        <a href="#" class="blog-link" style="font-size:0.9rem;">Read full article →</a>
+                        <div style="font-size:0.8rem; color:var(--text-dim);">💬 41 comments &nbsp;&nbsp; 🔗 Share</div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-full-card" style="margin-bottom:2rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.9rem;">
+                        <span class="blog-tag" style="color:#f59e0b; background:rgba(245,158,11,0.08); border-color:rgba(245,158,11,0.2);">Research</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">File Upload</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">Bypass Techniques</span>
+                    </div>
+                    <h2>Bypassing File Upload Filters in 2025: Beyond MIME Type Checks</h2>
+                    <div class="blog-meta" style="display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1rem; align-items:center;">
+                        <span style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="width:28px; height:28px; background:linear-gradient(135deg,#f59e0b,#ef4444); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:800; color:#fff;">RI</span>
+                            Rafiqul Islam &nbsp;<span style="color:var(--text-dim);">— Offensive Security Engineer</span>
+                        </span>
+                        <span>📅 Oct 1, 2025</span>
+                        <span>⏱ 10 min read</span>
+                        <span style="color:var(--text-dim);">👁 3,576</span>
+                    </div>
+                    <p>File upload functionality remains one of the most dangerous attack surfaces in web applications. Despite years of OWASP guidance, developers continue to validate uploads by checking only the <code>Content-Type</code> header — a value entirely controlled by the client — rather than inspecting the actual file magic bytes.</p>
+                    <p>In this post we walk through five bypass techniques observed in real production applications: simple MIME spoofing, polyglot file construction, null-byte injection in legacy PHP stacks, double-extension abuse, and <code>exiftool</code> metadata injection to embed PHP webshells inside valid JPEG files.</p>
+                    <div style="background:rgba(245,158,11,0.05); border-left:3px solid #f59e0b; padding:1rem 1.25rem; border-radius:0 var(--radius) var(--radius) 0; margin:1.2rem 0; font-size:0.9rem; color:var(--text-secondary);">
+                        <strong style="color:#f59e0b;">⚠ Responsible Disclosure:</strong> All techniques were tested only in authorised environments. PoC code is intentionally omitted. Full disclosure was completed before publication.
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.75rem;">
+                        <a href="#" class="blog-link" style="font-size:0.9rem;">Read full article →</a>
+                        <div style="font-size:0.8rem; color:var(--text-dim);">💬 17 comments &nbsp;&nbsp; 🔗 Share</div>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-full-card" style="margin-bottom:2rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.9rem;">
+                        <span class="blog-tag" style="color:#a78bfa; background:rgba(167,139,250,0.08); border-color:rgba(167,139,250,0.2);">Red Team</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">Active Directory</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">Kerberoasting</span>
+                    </div>
+                    <h2>Active Directory in Bangladeshi Enterprises: What We Found in 2025</h2>
+                    <div class="blog-meta" style="display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1rem; align-items:center;">
+                        <span style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="width:28px; height:28px; background:linear-gradient(135deg,#a78bfa,#ec4899); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:800; color:#fff;">SH</span>
+                            Sabbir Hossain &nbsp;<span style="color:var(--text-dim);">— Red Team Operator</span>
+                        </span>
+                        <span>📅 Sep 24, 2025</span>
+                        <span>⏱ 15 min read</span>
+                        <span style="color:var(--text-dim);">👁 9,142</span>
+                    </div>
+                    <p>Over the past twelve months our red team completed 28 internal network assessments targeting Active Directory environments at Bangladeshi banks, telcos, and government bodies. The results are stark: <strong style="color:var(--text-primary);">domain administrator access was achieved in every single engagement</strong>, with a median time-to-DA of 4 hours 17 minutes.</p>
+                    <p>The most frequently exploited attack paths: (1) Kerberoastable service accounts with weak passwords — present in 89% of environments, (2) unconstrained delegation enabled on legacy servers never decommissioned, and (3) NTLM relay attacks viable because SMB signing is disabled by default in most GPO baselines reviewed.</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.75rem;">
+                        <a href="#" class="blog-link" style="font-size:0.9rem;">Read full article →</a>
+                        <div style="font-size:0.8rem; color:var(--text-dim);">💬 58 comments &nbsp;&nbsp; 🔗 Share</div>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="blog-full-card" style="opacity:0.82; margin-bottom:2rem;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.9rem;">
+                        <span class="blog-tag" style="color:#34d399; background:rgba(52,211,153,0.08); border-color:rgba(52,211,153,0.2);">Compliance</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">ISO 27001</span>
+                        <span class="blog-tag" style="background:transparent; color:var(--text-secondary);">GRC</span>
+                    </div>
+                    <h2>Preparing for ISO 27001:2022 — A Practical Checklist for BD SMEs</h2>
+                    <div class="blog-meta" style="display:flex; gap:1.2rem; flex-wrap:wrap; margin-bottom:1rem; align-items:center;">
+                        <span style="display:flex; align-items:center; gap:0.45rem;">
+                            <span style="width:28px; height:28px; background:linear-gradient(135deg,#34d399,#06b6d4); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.68rem; font-weight:800; color:#0a1221;">FK</span>
+                            Farhana Karim &nbsp;<span style="color:var(--text-dim);">— GRC Consultant</span>
+                        </span>
+                        <span>📅 Sep 10, 2025</span>
+                        <span>⏱ 7 min read</span>
+                        <span style="color:var(--text-dim);">👁 2,390</span>
+                    </div>
+                    <p>The 2022 revision of ISO 27001 introduced 11 new controls and reorganised the Annex A structure significantly. For SMEs in Bangladesh aiming for certification before Q2 2026, the delta from the 2013 standard is manageable — but only if you understand which new controls carry the highest audit weight and which existing implementations need updating…</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.75rem;">
+                        <a href="#" class="blog-link" style="font-size:0.9rem;">Read full article →</a>
+                        <div style="font-size:0.8rem; color:var(--text-dim);">💬 9 comments &nbsp;&nbsp; 🔗 Share</div>
+                    </div>
+                </article>
+
+                <!-- Pagination -->
+                <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:1rem;">
+                    <a href="#" style="background:rgba(0,255,204,0.12); border:1px solid var(--accent-teal); color:var(--accent-teal); padding:0.4rem 0.9rem; border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; text-decoration:none; font-weight:700;">1</a>
+                    <a href="#" style="border:1px solid var(--border-subtle); color:var(--text-secondary); padding:0.4rem 0.9rem; border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; text-decoration:none;">2</a>
+                    <a href="#" style="border:1px solid var(--border-subtle); color:var(--text-secondary); padding:0.4rem 0.9rem; border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; text-decoration:none;">3</a>
+                    <span style="color:var(--text-dim); padding:0.4rem 0.5rem; font-size:0.85rem;">…</span>
+                    <a href="#" style="border:1px solid var(--border-subtle); color:var(--text-secondary); padding:0.4rem 0.9rem; border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; text-decoration:none;">12</a>
+                </div>
+
+            </div><!-- /left col -->
+
+            <!-- ══ RIGHT: Sidebar ════════════════════════════════════════ -->
+            <aside style="position:sticky; top:120px; display:flex; flex-direction:column; gap:1.5rem;">
+
+                <!-- Search -->
+                <div style="background:var(--gradient-card); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1.4rem;">
+                    <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); font-family:var(--font-mono); margin-bottom:0.9rem;">Search Articles</h4>
+                    <div style="display:flex; gap:0.5rem;">
+                        <input type="text" placeholder="Search…" style="flex:1; background:rgba(13,26,46,0.8); border:1px solid var(--border-normal); border-radius:var(--radius); padding:8px 12px; color:var(--text-primary); font-size:0.88rem; outline:none;" />
+                        <button style="background:var(--accent-teal); border:none; border-radius:var(--radius); padding:8px 14px; color:#0a1221; cursor:pointer; font-weight:800; font-size:0.9rem;">→</button>
+                    </div>
+                </div>
+
+                <!-- Most read -->
+                <div style="background:var(--gradient-card); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1.4rem;">
+                    <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); font-family:var(--font-mono); margin-bottom:1rem;">Most Read</h4>
+                    <style>.sb-post-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}.sb-post-list li{display:flex;gap:0.7rem;align-items:start;padding-bottom:0.9rem;padding-top:0}.sb-post-list li+li{padding-top:0.9rem;border-top:1px solid #1e3a5f}</style>
+                    <ol class="sb-post-list">
+                        <% var topPosts = [
+                            { n:'01', title:'Active Directory in BD Enterprises: What We Found', views:'9,142' },
+                            { n:'02', title:'Misconfigured AWS S3 Buckets: Field Notes', views:'7,204' },
+                            { n:'03', title:'The Rise of DOM XSS in Modern SPAs', views:'4,831' },
+                            { n:'04', title:'Bypassing File Upload Filters in 2025', views:'3,576' },
+                            { n:'05', title:'Preparing for ISO 27001:2022', views:'2,390' }
+                        ]; %>
+                        <% topPosts.forEach(function(p, i) { %>
+                        <li>
+                            <span style="font-family:var(--font-mono); font-size:1.2rem; font-weight:800; color:var(--border-normal); line-height:1.1; min-width:1.6rem;"><%= p.n %></span>
+                            <div>
+                                <a href="#" style="color:var(--text-primary); text-decoration:none; font-size:0.86rem; line-height:1.4; font-weight:600;"><%= p.title %></a>
+                                <div style="font-size:0.74rem; color:var(--text-dim); margin-top:0.2rem;">👁 <%= p.views %> views</div>
+                            </div>
+                        </li>
+                        <% }); %>
+                    </ol>
+                </div>
+
+                <!-- Topics -->
+                <div style="background:var(--gradient-card); border:1px solid var(--border-subtle); border-radius:var(--radius); padding:1.4rem;">
+                    <h4 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); font-family:var(--font-mono); margin-bottom:1rem;">Topics</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:0.45rem;">
+                        <% ['XSS','SQL Injection','Active Directory','AWS','Phishing','Ransomware','OSINT','LFI','SSRF','Kerberoasting','ISO 27001','VAPT','Zero-Day','Bug Bounty'].forEach(function(tag) { %>
+                        <a href="#" class="blog-tag" style="text-decoration:none; font-size:0.68rem; background:transparent; color:var(--text-secondary);"><%= tag %></a>
+                        <% }); %>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div style="background:linear-gradient(135deg,rgba(0,255,204,0.07),rgba(0,102,255,0.07)); border:1px solid var(--border-bright); border-radius:var(--radius); padding:1.4rem;">
+                    <h4 style="font-size:0.95rem; color:var(--text-primary); margin-bottom:0.4rem;">📬 Threat Intel Digest</h4>
+                    <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:1rem;">Weekly CVEs, threat actor TTPs, and our latest research — every Monday. No spam.</p>
+                    <input type="email" placeholder="you@company.com" style="width:100%; box-sizing:border-box; background:rgba(13,26,46,0.8); border:1px solid var(--border-normal); border-radius:var(--radius); padding:8px 12px; color:var(--text-primary); font-size:0.88rem; outline:none; margin-bottom:0.7rem;" />
+                    <button style="width:100%; background:var(--accent-teal); border:none; border-radius:var(--radius); padding:9px; color:#0a1221; font-weight:700; cursor:pointer; font-size:0.88rem;">Subscribe Free</button>
+                    <p style="font-size:0.72rem; color:var(--text-dim); margin-top:0.55rem; text-align:center;">3,200+ subscribers · Unsubscribe anytime</p>
+                </div>
+
+            </aside><!-- /sidebar -->
+
+        </div><!-- /grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     COMMUNITY COMMENTS  –  CHALLENGE [3b]: Stored XSS Sink
+     Comments rendered with unescaped EJS (<%- %>) intentionally.
+════════════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="comments">
+    <div class="container" style="max-width:860px;">
+
+        <div class="section-header" style="margin-bottom:2rem;">
+            <div class="section-badge">Community</div>
+            <h2 class="section-title">Reader Comments</h2>
+            <p class="section-sub">
+                Join the discussion. Our security team reviews all comments.
+                <span style="color:#00ffcc; font-size:0.82em;">&#128274; Admin bot checks new comments regularly.</span>
+            </p>
+        </div>
+
+        <!-- Comment list – VULNERABILITY: raw HTML rendered without escaping -->
+        <div class="comments-list" id="commentsList">
+            <% if (comments && comments.length > 0) { %>
+                <% comments.forEach(function(comment) { %>
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <div style="display:flex; align-items:center; gap:0.65rem;">
+                            <span style="width:34px; height:34px; background:linear-gradient(135deg,#1e293b,#334155); border:1px solid var(--border-normal); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.78rem; color:var(--text-secondary); font-weight:700; text-transform:uppercase;">
+                                <%= comment.author.charAt(0) %>
+                            </span>
+                            <div>
+                                <span class="comment-author"><%- comment.author %></span>
+                                <div style="font-size:0.73rem; color:var(--text-dim);">Community member</div>
+                            </div>
+                        </div>
+                        <span class="comment-time"><%= comment.timestamp %></span>
+                    </div>
+                    <!-- VULNERABILITY: unescaped output (XSS sink) -->
+                    <div class="comment-body" style="padding-left:3rem;"><%- comment.content %></div>
+                    <div style="padding-left:3rem; margin-top:0.65rem; display:flex; gap:1.2rem; font-size:0.78rem; color:var(--text-dim);">
+                        <a href="#" style="color:var(--text-dim); text-decoration:none; transition:color .2s;">👍 Like</a>
+                        <a href="#" style="color:var(--text-dim); text-decoration:none; transition:color .2s;">↩ Reply</a>
+                        <a href="#" style="color:var(--text-dim); text-decoration:none; transition:color .2s;">🚩 Report</a>
+                    </div>
+                </div>
+                <% }); %>
+            <% } else { %>
+            <div class="no-comments" style="border:1px dashed var(--border-subtle); border-radius:var(--radius); padding:2.5rem; text-align:center;">
+                <p style="margin:0; color:var(--text-dim); font-style:italic;">No comments yet — start the conversation below.</p>
+            </div>
+            <% } %>
+        </div>
+
+        <!-- Comment submission form -->
+        <div class="card" style="margin-top:2rem; padding:2rem;">
+            <h3 style="margin-bottom:0.25rem; color:var(--text-primary); font-size:1.1rem;">Leave a Comment</h3>
+            <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:1.5rem;">Your email is never published. All comments are reviewed before appearing.</p>
+            <form action="/blog/comment" method="POST" class="comment-form">
+                <div class="form-group" style="margin-bottom:1.2rem;">
+                        <label for="author">Name</label>
+                        <input type="text" id="author" name="author" placeholder="Your name" class="form-input" maxlength="80" />
+                </div>
+                <div class="form-group">
+                    <label for="content">Comment</label>
+                    <textarea id="content" name="content" rows="5" placeholder="Share your thoughts, ask a question, or point out something we missed…" class="form-input form-textarea" maxlength="2000"></textarea>
+                </div>
+                <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                    <a href="/xss/trigger-bot" class="btn btn-outline btn-sm" target="_blank">&#128077; Notify Moderator</a>
+                    <a href="/xss/hook/log" class="btn btn-outline btn-sm" target="_blank">&#128202; Activity Log</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Want Our Research Delivered Weekly?</h2>
+            <p>Subscribe to the Cyber Bangla threat intelligence newsletter — CVEs, TTPs, and original research every Monday.</p>
+            <a href="/contact" class="btn btn-primary btn-lg">Subscribe Free</a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

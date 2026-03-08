@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">What We Offer</div>
+        <h1 class="page-hero-title">Our Services</h1>
+        <p class="page-hero-sub">End-to-end offensive and defensive cybersecurity for modern organisations.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="services-detail-grid">
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#128272;</div>
+                <div class="sdc-body">
+                    <h3>Penetration Testing</h3>
+                    <p>Our OSCP-certified testers conduct comprehensive black-box, grey-box, and white-box assessments of web applications, APIs, mobile apps, cloud infrastructure, and internal networks. Every engagement includes a technical report, executive summary, and a re-test included at no additional cost.</p>
+                    <ul class="service-features">
+                        <li>OWASP Top 10 coverage</li>
+                        <li>Business-logic flaw analysis</li>
+                        <li>Detailed CVSS-scored findings</li>
+                        <li>Free re-test within 90 days</li>
+                    </ul>
+                    <div class="sdc-badge">From ৳ 80,000 / engagement</div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#128269;</div>
+                <div class="sdc-body">
+                    <h3>Vulnerability Assessment & Pen Test (VAPT)</h3>
+                    <p>A combined automated scanning and manual validation exercise producing an exhaustive vulnerability inventory. Ideal for regulatory compliance (Bangladesh Bank guidelines, PCI-DSS, ISO 27001 audits).</p>
+                    <ul class="service-features">
+                        <li>Nessus + Burp Suite Pro scanning</li>
+                        <li>False-positive elimination</li>
+                        <li>Risk prioritisation matrix</li>
+                        <li>Remediation roadmap</li>
+                    </ul>
+                    <div class="sdc-badge">From ৳ 50,000 / scope</div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#128736;</div>
+                <div class="sdc-body">
+                    <h3>Red Team Operations</h3>
+                    <p>Goal-based adversary simulation designed to test your people, processes, and technology simultaneously. We emulate nation-state and criminal TTPs mapped to MITRE ATT&CK – from initial phishing to full domain compromise.</p>
+                    <ul class="service-features">
+                        <li>Custom implants & C2 infrastructure</li>
+                        <li>Social engineering campaigns</li>
+                        <li>Physical security testing</li>
+                        <li>Purple team debrief session</li>
+                    </ul>
+                    <div class="sdc-badge">From ৳ 2,00,000 / campaign</div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#127756;</div>
+                <div class="sdc-body">
+                    <h3>Incident Response</h3>
+                    <p>When the worst happens, our 24/7 CSIRT team deploys in under four hours. We contain the breach, preserve forensic evidence, identify the root cause, eradicate the threat, and guide your recovery.</p>
+                    <ul class="service-features">
+                        <li>&lt; 4-hour on-site SLA</li>
+                        <li>Digital forensics & chain-of-custody</li>
+                        <li>Legal and regulatory liaison</li>
+                        <li>Post-incident hardening review</li>
+                    </ul>
+                    <div class="sdc-badge">Retainer from ৳ 15,000 / month</div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#128203;</div>
+                <div class="sdc-body">
+                    <h3>GRC & Security Consulting</h3>
+                    <p>Governance, Risk and Compliance consulting aligned with ISO 27001, NIST CSF, PCI-DSS, and Bangladesh Bank ISMS guidelines. We help you build and audit security programmes that pass regulatory scrutiny.</p>
+                    <ul class="service-features">
+                        <li>ISMS design & implementation</li>
+                        <li>Third-party vendor risk reviews</li>
+                        <li>Policy and procedure writing</li>
+                        <li>Audit readiness assessments</li>
+                    </ul>
+                    <div class="sdc-badge">Consulting from ৳ 1,200 / hour</div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="sdc-icon">&#9881;</div>
+                <div class="sdc-body">
+                    <h3>Bug Bounty Programme Management</h3>
+                    <p>We design, launch, and triage your private or public bug bounty programme. Our vetted community of 2,000+ Bangladeshi researchers provides cost-effective continuous security testing with structured triage and remediation SLAs.</p>
+                    <ul class="service-features">
+                        <li>Programme scoping & rules-of-engagement</li>
+                        <li>Researcher community access</li>
+                        <li>Triage-as-a-service</li>
+                        <li>Monthly programme reports</li>
+                    </ul>
+                    <div class="sdc-badge">Setup from ৳ 30,000 + bounty pool</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Not Sure Which Service You Need?</h2>
+            <p>Talk to one of our senior consultants for a free 30-minute scoping call.</p>
+            <a href="/contact" class="btn btn-primary btn-lg">Schedule a Call</a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">Learn & Grow</div>
+        <h1 class="page-hero-title">Cyber Bangla Academy</h1>
+        <p class="page-hero-sub">Hands-on cybersecurity training for professionals, developers, and enthusiasts.</p>
+    </div>
+</section>
+
+<!-- Search Bar (XSS Basic challenge entry point) -->
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="academy-search-wrap">
+            <h2 class="section-title" style="margin-bottom:0.5rem;">Find a Course</h2>
+            <p class="section-sub" style="margin-bottom:1.5rem;">Search our catalogue of 80+ courses, labs, and CTF workshops.</p>
+            <form action="/academy/search" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="e.g. XSS, SQL Injection, OSCP prep…"
+                       class="search-input" autocomplete="off"
+                       <% if (searchQuery) { %>value="<%= searchQuery %>"<% } %> />
+                <button type="submit" class="btn btn-primary">&#128269; Search</button>
+            </form>
+            <% if (searchResults !== null) { %>
+            <div class="search-results-note">
+                Results for "<strong><%= searchQuery %></strong>" shown below.
+            </div>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<!-- Course Listings -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Featured Paths</div>
+            <h2 class="section-title">Learning Paths</h2>
+        </div>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <span class="course-tag">Beginner</span>
+                <h3>Introduction to Ethical Hacking</h3>
+                <p>Recon, enumeration, exploitation basics, Kali Linux fundamentals. No prior experience required.</p>
+                <div class="course-meta"><span>&#128337; 40 hrs</span> &nbsp;·&nbsp; <span>&#127891; Certificate</span></div>
+                <a href="/academy/content?page=intro" class="btn btn-outline btn-sm">Start Learning →</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag">Intermediate</span>
+                <h3>Web Application Penetration Testing</h3>
+                <p>Deep-dive into OWASP Top 10, BurpSuite Pro, authentication bypass, XSS, SQLi, IDOR, SSRF.</p>
+                <div class="course-meta"><span>&#128337; 60 hrs</span> &nbsp;·&nbsp; <span>&#127891; Certificate</span></div>
+                <a href="/academy/content?page=webapp" class="btn btn-outline btn-sm">Start Learning →</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag accent-red">Advanced</span>
+                <h3>Red Team Operations</h3>
+                <p>Advanced persistent threats, lateral movement, Cobalt Strike, Active Directory attacks, custom C2.</p>
+                <div class="course-meta"><span>&#128337; 80 hrs</span> &nbsp;·&nbsp; <span>&#127891; Certificate</span></div>
+                <a href="/academy/content?page=advanced" class="btn btn-outline btn-sm">Start Learning →</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag">Intermediate</span>
+                <h3>Mobile Application Security</h3>
+                <p>Android & iOS security testing, reverse engineering APKs, Frida instrumentation, ADB exploitation.</p>
+                <div class="course-meta"><span>&#128337; 45 hrs</span> &nbsp;·&nbsp; <span>&#127891; Certificate</span></div>
+                <a href="/academy/content?page=intro" class="btn btn-outline btn-sm">Start Learning →</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag">Beginner</span>
+                <h3>Security Fundamentals for Developers</h3>
+                <p>Secure coding practices, SAST/DAST, dependency scanning, DevSecOps pipeline integration.</p>
+                <div class="course-meta"><span>&#128337; 25 hrs</span> &nbsp;·&nbsp; <span>&#127891; Certificate</span></div>
+                <a href="/academy/content?page=intro" class="btn btn-outline btn-sm">Start Learning →</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag accent-purple">CTF</span>
+                <h3>CTF Bootcamp – Web Challenges</h3>
+                <p>Solve real CTF challenges: XSS, SQL injection, SSRF, deserialization, LFI/RFI. Live lab environment.</p>
+                <div class="course-meta"><span>&#128337; 30 hrs</span> &nbsp;·&nbsp; <span>&#127774; Live Labs</span></div>
+                <a href="/academy/demo" class="btn btn-outline btn-sm">Try Demo →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Platform Tools Section -->
+<section class="section" style="padding-top:0;">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Live Tools</div>
+            <h2 class="section-title">Platform Tools</h2>
+            <p class="section-sub">Real applications running in our lab environment — used for hands-on web security practice.</p>
+        </div>
+        <div class="course-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+            <div class="course-card">
+                <span class="course-tag accent-purple">Lab</span>
+                <h3>&#128027; Issue Tracker</h3>
+                <p>Internal bug &amp; issue reporting system. Submit, track, and review security issues raised during lab sessions and penetration tests.</p>
+                <div class="course-meta"><span>&#128736; Internal Tool</span> &nbsp;·&nbsp; <span>&#128274; Lab Access</span></div>
+                <a href="/issues" class="btn btn-outline btn-sm">Open Tracker &#8594;</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag">Lab</span>
+                <h3>&#128100; Profile Manager</h3>
+                <p>Manage your lab profile and upload a profile picture. Supports common image formats for student identification.</p>
+                <div class="course-meta"><span>&#128736; Internal Tool</span> &nbsp;·&nbsp; <span>&#127891; Student Portal</span></div>
+                <a href="/profile/upload" class="btn btn-outline btn-sm">Go to Profile &#8594;</a>
+            </div>
+            <div class="course-card">
+                <span class="course-tag accent-red">Live</span>
+                <h3>&#128240; Security Blog</h3>
+                <p>Latest writeups, vulnerability disclosures, and research articles from Cyber Bangla's security team.</p>
+                <div class="course-meta"><span>&#128337; Updated Weekly</span> &nbsp;·&nbsp; <span>&#128203; Research</span></div>
+                <a href="/blog" class="btn btn-outline btn-sm">Read Blog &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Demo Section (DOM XSS challenge) -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Try It Live</div>
+            <h2 class="section-title">Interactive Course Viewer</h2>
+            <p class="section-sub">Preview course modules directly in your browser. No sign-up required.</p>
+        </div>
+        <div style="text-align:center;">
+            <p style="color:#8ba3c7; max-width:600px; margin:0 auto 2rem;">
+                Our client-side demo viewer lets you jump to any course section via URL.
+                Try the CTF Bootcamp module below.
+            </p>
+            <a href="/academy/demo?section=Welcome+to+Cyber+Bangla+Academy" class="btn btn-primary btn-lg">
+                &#9654; Launch Demo Viewer
+            </a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">Get in Touch</div>
+        <h1 class="page-hero-title">Contact Us</h1>
+        <p class="page-hero-sub">Ready to secure your organisation? Let's talk.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="contact-grid">
+
+            <div class="contact-info">
+                <h2 class="section-title" style="font-size:1.6rem;">We Are Here to Help</h2>
+                <p style="color:#8ba3c7; margin-bottom:2rem;">
+                    Whether you need a quick quote, a scoping call, or have a security emergency —
+                    our team responds within 2 business hours during office hours, and our IR hotline
+                    operates 24/7.
+                </p>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128205;</div>
+                        <div>
+                            <strong>Office</strong>
+                            <p>Level 9, Bashundhara City Complex, Panthapath, Dhaka 1215, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#9993;</div>
+                        <div>
+                            <strong>General Enquiries</strong>
+                            <p>info@cyberbangla.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#128272;</div>
+                        <div>
+                            <strong>Security Disclosures</strong>
+                            <p>security@cyberbangla.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">&#9832;</div>
+                        <div>
+                            <strong>IR Hotline (24/7)</strong>
+                            <p>+880 1800 000 999</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrap card" style="padding:2.5rem;">
+                <% if (typeof success !== 'undefined' && success) { %>
+                <div class="alert-success">
+                    <span>&#10003;</span> <%= success %>
+                </div>
+                <% } %>
+                <h3 style="margin-bottom:1.5rem; color:#e2e8f0;">Send Us a Message</h3>
+                <form action="/contact" method="POST" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" class="form-input" placeholder="Md. Rafiq" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastName" class="form-input" placeholder="Islam" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" class="form-input" placeholder="rafiq@company.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Organisation</label>
+                        <input type="text" name="org" class="form-input" placeholder="Company or Institution Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Service Required</label>
+                        <select name="service" class="form-input form-select">
+                            <option value="">Select a service…</option>
+                            <option>Penetration Testing</option>
+                            <option>Vulnerability Assessment (VAPT)</option>
+                            <option>Red Team Operations</option>
+                            <option>Incident Response</option>
+                            <option>Security Consulting / GRC</option>
+                            <option>Bug Bounty Management</option>
+                            <option>Academy Training</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" class="form-input form-textarea" placeholder="Tell us about your security challenge or project scope…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Send Message &#8594;</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title: 'Issue Tracker | Cyber Bangla'}) %></head>
+<body>
+
+<%- include('partials/nav', {active: 'academy'}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">&#128027; Lab Tool</div>
+        <h1 class="page-hero-title">Issue Tracker</h1>
+        <p class="page-hero-sub">Report bugs, security vulnerabilities, and feature requests for the Cyber Bangla lab environment. All submissions are reviewed by the admin team.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="it-layout">
+
+            <!-- ── Submit Form ─────────────────────────────────────────── -->
+            <div class="it-form-card">
+                <div class="it-form-header">
+                    <h2>&#128228; Submit New Issue</h2>
+                    <p>Fields marked <span style="color:var(--accent-teal);">*</span> are required.</p>
+                </div>
+
+                <div id="alertMsg" class="it-alert" style="display:none;"></div>
+
+                <form id="issueForm">
+                    <div class="it-form-group">
+                        <label for="title">Issue Title <span class="req">*</span></label>
+                        <input type="text" id="title" name="title"
+                               placeholder="Brief, descriptive title for the issue" required />
+                    </div>
+
+                    <div class="it-form-row">
+                        <div class="it-form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="">— Select —</option>
+                                <option value="Bug">&#128027; Bug</option>
+                                <option value="Security">&#128272; Security</option>
+                                <option value="Feature Request">&#9672; Feature Request</option>
+                                <option value="Documentation">&#128196; Documentation</option>
+                                <option value="Other">&#8226; Other</option>
+                            </select>
+                        </div>
+                        <div class="it-form-group">
+                            <label for="priority">Priority</label>
+                            <select id="priority" name="priority">
+                                <option value="Low">&#9641; Low</option>
+                                <option value="Medium" selected>&#9642; Medium</option>
+                                <option value="High">&#9650; High</option>
+                                <option value="Critical">&#9888; Critical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="it-form-group">
+                        <label for="description">Description <span class="req">*</span></label>
+                        <textarea id="description" name="description" rows="6"
+                                  placeholder="Describe the issue in detail. Include steps to reproduce if it's a bug." required></textarea>
+                    </div>
+
+                    <div class="it-form-actions">
+                        <button type="submit" class="btn btn-primary">&#128228; Submit Issue</button>
+                        <button type="reset" class="btn btn-outline">&#10006; Clear</button>
+                        <a href="/issues/admin" class="btn btn-outline it-admin-link">&#9881; Admin Panel</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ── Sidebar ─────────────────────────────────────────────── -->
+            <aside class="it-sidebar">
+                <div class="it-sidebar-card">
+                    <h3>&#128161; How It Works</h3>
+                    <ol class="it-how-list">
+                        <li>Submit your issue with a clear title &amp; description.</li>
+                        <li>The admin team receives and reviews the submission.</li>
+                        <li>Issues are triaged, prioritised, and resolved.</li>
+                    </ol>
+                </div>
+
+                <div class="it-sidebar-card">
+                    <h3>&#127991; Categories</h3>
+                    <ul class="it-cat-list">
+                        <li><span class="it-badge badge-bug">Bug</span> Unexpected behaviour or crash</li>
+                        <li><span class="it-badge badge-security">Security</span> Vulnerability report</li>
+                        <li><span class="it-badge badge-feature">Feature</span> New capability request</li>
+                        <li><span class="it-badge badge-doc">Docs</span> Missing or incorrect docs</li>
+                    </ul>
+                </div>
+
+                <div class="it-sidebar-card">
+                    <h3>&#128272; Security Disclosures</h3>
+                    <p style="color:var(--text-secondary);font-size:.88rem;line-height:1.7;">
+                        For critical vulnerabilities requiring immediate attention, contact
+                        <span style="color:var(--accent-teal);">security@cyberbangla.com</span> directly.
+                        Response guaranteed within 2 hours.
+                    </p>
+                </div>
+
+                <div class="it-sidebar-card">
+                    <h3>&#128202; Stats</h3>
+                    <div class="it-stat-row">
+                        <div class="it-stat-mini" id="sTotal">
+                            <span class="it-stat-num">–</span>
+                            <span class="it-stat-lbl">Total</span>
+                        </div>
+                        <div class="it-stat-mini" id="sOpen">
+                            <span class="it-stat-num" style="color:var(--accent-teal);">–</span>
+                            <span class="it-stat-lbl">Open</span>
+                        </div>
+                        <div class="it-stat-mini" id="sSec">
+                            <span class="it-stat-num" style="color:#ffaa44;">–</span>
+                            <span class="it-stat-lbl">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div><!-- .it-layout -->
+    </div>
+</section>
+
+<style>
+/* ── Issue Tracker – Submit Page ─────────────────────────────────────────── */
+.it-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    align-items: start;
+}
+@media (max-width: 900px) { .it-layout { grid-template-columns: 1fr; } }
+
+/* Form card */
+.it-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-normal);
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+.it-form-header h2 {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    margin-bottom: .35rem;
+}
+.it-form-header p { color: var(--text-secondary); font-size: .88rem; margin-bottom: 1.6rem; }
+.req { color: var(--accent-teal); }
+
+.it-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .it-form-row { grid-template-columns: 1fr; } }
+
+.it-form-group { margin-bottom: 1.2rem; }
+.it-form-group label {
+    display: block;
+    margin-bottom: .45rem;
+    font-weight: 600;
+    font-size: .88rem;
+    color: var(--text-primary);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+.it-form-group input,
+.it-form-group textarea,
+.it-form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+.it-form-group input::placeholder,
+.it-form-group textarea::placeholder { color: var(--text-dim); }
+.it-form-group input:focus,
+.it-form-group textarea:focus,
+.it-form-group select:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px rgba(0,255,204,.08);
+}
+.it-form-group select option { background: var(--bg-secondary); color: var(--text-primary); }
+.it-form-group textarea { resize: vertical; min-height: 130px; }
+
+.it-form-actions {
+    display: flex;
+    gap: .8rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border-subtle);
+}
+.it-admin-link { margin-left: auto; }
+
+/* Alert */
+.it-alert {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    margin-bottom: 1.2rem;
+    font-size: .9rem;
+    font-weight: 500;
+}
+.it-alert-success {
+    background: rgba(0,255,204,.07);
+    border: 1px solid rgba(0,255,204,.25);
+    color: var(--accent-teal);
+}
+.it-alert-error {
+    background: rgba(255,51,102,.07);
+    border: 1px solid rgba(255,51,102,.25);
+    color: var(--accent-red);
+}
+
+/* Sidebar */
+.it-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+.it-sidebar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 1.3rem;
+}
+.it-sidebar-card h3 {
+    font-family: var(--font-heading);
+    font-size: .88rem;
+    color: var(--text-primary);
+    margin-bottom: .9rem;
+    letter-spacing: .06em;
+}
+.it-how-list {
+    padding-left: 1.1rem;
+    color: var(--text-secondary);
+    font-size: .88rem;
+    line-height: 2.1;
+}
+.it-cat-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.it-cat-list li {
+    font-size: .84rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+}
+.it-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+.badge-bug      { background:rgba(255,51,102,.1); color:var(--accent-red); border:1px solid rgba(255,51,102,.25); }
+.badge-security { background:rgba(255,165,0,.1);  color:#ffaa44;           border:1px solid rgba(255,165,0,.25); }
+.badge-feature  { background:rgba(0,255,204,.07); color:var(--accent-teal);border:1px solid var(--border-normal);}
+.badge-doc      { background:rgba(0,170,255,.08); color:var(--accent-blue);border:1px solid rgba(0,170,255,.25); }
+
+/* Mini stats */
+.it-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; }
+.it-stat-mini {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    padding: .8rem .4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+.it-stat-num { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-primary); font-weight: 700; }
+.it-stat-lbl { font-size: .7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .08em; }
+</style>
+
+<script>
+    // Load live stats into sidebar
+    (async function() {
+        try {
+            var res = await fetch('/api/issues');
+            var issues = await res.json();
+            var total = issues.length;
+            var sec   = issues.filter(function(i){ return i.category === 'Security'; }).length;
+            document.getElementById('sTotal').querySelector('.it-stat-num').textContent = total;
+            document.getElementById('sOpen').querySelector('.it-stat-num').textContent  = total;
+            document.getElementById('sSec').querySelector('.it-stat-num').textContent   = sec;
+        } catch(e) {}
+    })();
+
+    document.getElementById('issueForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var title       = document.getElementById('title').value;
+        var description = document.getElementById('description').value;
+        var category    = document.getElementById('category').value;
+        var msgDiv      = document.getElementById('alertMsg');
+
+        try {
+            var res = await fetch('/api/submit-issue', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: title, description: description, category: category })
+            });
+            var data = await res.json();
+            if (res.ok) {
+                msgDiv.className = 'it-alert it-alert-success';
+                msgDiv.textContent = '✓ Issue #' + data.id + ' submitted. The admin team will review it shortly.';
+                msgDiv.style.display = 'block';
+                document.getElementById('issueForm').reset();
+                setTimeout(function() { msgDiv.style.display = 'none'; }, 5000);
+            } else {
+                msgDiv.className = 'it-alert it-alert-error';
+                msgDiv.textContent = data.error || 'Error submitting issue.';
+                msgDiv.style.display = 'block';
+            }
+        } catch(err) {
+            msgDiv.className = 'it-alert it-alert-error';
+            msgDiv.textContent = 'Network error: ' + err.message;
+            msgDiv.style.display = 'block';
+        }
+    });
+</script>
+
+<%- include('partials/footer') %>
+</body>
+</html>

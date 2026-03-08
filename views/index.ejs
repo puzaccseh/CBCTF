@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title}) %></head>
+<body>
+
+<%- include('partials/nav', {active}) %>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">&#9632; Bangladesh's #1 Cybersecurity Firm</div>
+        <h1 class="hero-title">
+            Securing the<br /><span class="gradient-text">Digital Future</span>
+        </h1>
+        <p class="hero-sub">
+            Advanced penetration testing, vulnerability assessment, and incident response
+            for enterprises, banks, and government institutions across South Asia.
+        </p>
+        <div class="hero-cta">
+            <a href="/services" class="btn btn-primary btn-lg">Our Services</a>
+            <a href="/contact"  class="btn btn-outline btn-lg">Free Consultation</a>
+        </div>
+        <div class="hero-tags">
+            <span>OSCP Certified</span>
+            <span>ISO 27001</span>
+            <span>CEH Experts</span>
+            <span>24/7 SOC</span>
+        </div>
+    </div>
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════════ -->
+<section class="stats-bar">
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-number" data-target="500">0</span><span class="accent">+</span>
+            <span class="stat-label">Clients Protected</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="10">0</span><span class="accent">+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="1200">0</span><span class="accent">+</span>
+            <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="50">0</span><span class="accent">+</span>
+            <span class="stat-label">Security Experts</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SERVICES OVERVIEW
+════════════════════════════════════════════════════════════════ -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">What We Do</div>
+            <h2 class="section-title">Our Core Services</h2>
+            <p class="section-sub">Comprehensive cybersecurity solutions tailored for the modern threat landscape.</p>
+        </div>
+
+        <!-- TODO: [DEV] Clean up before prod deploy – dev_ref=CBCTF{view_source_flag} -->
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#128272;</div>
+                <h3>Penetration Testing</h3>
+                <p>Full-scope black-box, grey-box, and white-box assessments. Web apps, APIs, mobile, and infrastructure.</p>
+                <a href="/services" class="service-link">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128269;</div>
+                <h3>Vulnerability Assessment</h3>
+                <p>Continuous scanning and manual validation to surface real risks before attackers do.</p>
+                <a href="/services" class="service-link">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128736;</div>
+                <h3>Red Team Operations</h3>
+                <p>Realistic adversary simulations mimicking nation-state and criminal TTPs to test your defences.</p>
+                <a href="/services" class="service-link">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127756;</div>
+                <h3>Incident Response</h3>
+                <p>24/7 rapid-response teams to contain, investigate, and remediate breaches across any environment.</p>
+                <a href="/services" class="service-link">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128203;</div>
+                <h3>Security Consulting</h3>
+                <p>GRC, security architecture, policy development, and regulatory compliance consulting.</p>
+                <a href="/services" class="service-link">Learn more →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127891;</div>
+                <h3>Security Academy</h3>
+                <p>Hands-on training for developers, sysadmins, and security teams. CTF events and certifications.</p>
+                <a href="/academy" class="service-link">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WHY CHOOSE US
+════════════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="why-us">
+    <div class="container">
+        <div class="why-grid">
+            <div class="why-text">
+                <div class="section-badge">Why Cyber Bangla</div>
+                <h2 class="section-title">Built for the Adversarial Age</h2>
+                <p class="section-sub">
+                    Our team of OSCP, CEH, and CISSP-certified consultants has defended
+                    Bangladesh's most critical digital infrastructure since 2015.
+                </p>
+                <ul class="why-list">
+                    <li><span class="check">&#10003;</span> Dedicated team, no outsourcing</li>
+                    <li><span class="check">&#10003;</span> Full-spectrum offensive and defensive capabilities</li>
+                    <li><span class="check">&#10003;</span> NDA-protected, confidential reporting</li>
+                    <li><span class="check">&#10003;</span> Bangladesh Bank and BRTA certified assessors</li>
+                </ul>
+                <a href="/about" class="btn btn-primary" style="margin-top:1.5rem;">Meet the Team</a>
+            </div>
+            <div class="why-terminal">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="term-btn red"></span>
+                        <span class="term-btn yellow"></span>
+                        <span class="term-btn green"></span>
+                        <span class="term-title">cb-scan.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="t-prompt">$</span> <span class="t-cmd">nmap -sV --script vuln target.bd</span></p>
+                        <p class="t-out">Starting Nmap 7.94 — Cyber Bangla Custom Build</p>
+                        <p class="t-out">Scanning 192.168.1.0/24 (256 hosts)…</p>
+                        <p class="t-green">Host is up (0.0012s latency).</p>
+                        <p class="t-out">PORT   STATE  SERVICE  VERSION</p>
+                        <p class="t-green">80/tcp open   http     Apache 2.4.41</p>
+                        <p class="t-red">443/tcp open  ssl/http  <span class="t-blink">CRITICAL: CVE-2023-XXXX</span></p>
+                        <p class="t-out">22/tcp  open  ssh      OpenSSH 8.2</p>
+                        <p class="t-out"><br />Generating report…</p>
+                        <p class="t-green">&#10003; Report saved → /reports/target_bd_20251014.pdf</p>
+                        <p><span class="t-prompt">$</span> <span class="t-cursor">▌</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LATEST BLOG POSTS
+════════════════════════════════════════════════════════════════ -->
+<section class="section" id="blog-teaser">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Knowledge Base</div>
+            <h2 class="section-title">Latest from the Blog</h2>
+            <p class="section-sub">Threat intelligence, vulnerability disclosures, and security research.</p>
+        </div>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-tag">Web Security</div>
+                <h3>The Rise of DOM XSS in Modern SPAs</h3>
+                <p>How client-side frameworks create new attack surfaces for DOM-based cross-site scripting.</p>
+                <div class="blog-meta"><span>Oct 12, 2025</span> &nbsp;·&nbsp; <span>8 min read</span></div>
+                <a href="/blog" class="blog-link">Read article →</a>
+            </article>
+            <article class="blog-card">
+                <div class="blog-tag">Cloud Security</div>
+                <h3>Misconfigured S3 Buckets: A Field Guide</h3>
+                <p>Real-world case studies from our cloud security assessments across BD enterprise clients.</p>
+                <div class="blog-meta"><span>Oct 8, 2025</span> &nbsp;·&nbsp; <span>12 min read</span></div>
+                <a href="/blog" class="blog-link">Read article →</a>
+            </article>
+            <article class="blog-card">
+                <div class="blog-tag">Research</div>
+                <h3>Exploiting Insecure File Uploads in 2025</h3>
+                <p>Modern techniques used by attackers to bypass upload filters and achieve RCE on web servers.</p>
+                <div class="blog-meta"><span>Oct 1, 2025</span> &nbsp;·&nbsp; <span>10 min read</span></div>
+                <a href="/blog" class="blog-link">Read article →</a>
+            </article>
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+            <a href="/blog" class="btn btn-outline">View All Articles →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CTA BANNER
+════════════════════════════════════════════════════════════════ -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Secure Your Infrastructure?</h2>
+            <p>Get a free initial consultation with our senior security consultants.</p>
+            <a href="/contact" class="btn btn-primary btn-lg">Start Free Assessment</a>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

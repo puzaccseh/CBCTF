@@ -1,0 +1,55 @@
+Module 2: Web Application Penetration Testing
+=============================================
+
+This module covers the OWASP Top 10 and beyond, with hands-on labs using
+BurpSuite Pro, OWASP ZAP, and custom tooling developed by the Cyber Bangla team.
+
+--------------------------------------------------
+Section 2.1 – Cross-Site Scripting (XSS)
+--------------------------------------------------
+
+  Types:
+    Reflected XSS   – Server echoes unsanitised user input in the response.
+    Stored XSS      – Malicious input is persisted in the database/store.
+    DOM-based XSS   – Client-side JavaScript writes attacker input to the DOM.
+
+  Common sinks: innerHTML, document.write, eval, location.href
+
+  Payloads: <script>alert(1)</script>
+            <img src=x onerror=alert(1)>
+            <svg onload=alert(1)>
+
+--------------------------------------------------
+Section 2.2 – SQL Injection
+--------------------------------------------------
+
+  Classic SQLi, Blind SQLi, Time-based blind, Error-based, UNION attacks.
+  Tools: sqlmap, manual BurpSuite
+
+--------------------------------------------------
+Section 2.3 – File Upload Vulnerabilities
+--------------------------------------------------
+
+  Common bypass techniques:
+    - MIME type spoofing (set Content-Type: image/jpeg for any file)
+    - Double extension: shell.php.jpg
+    - Magic byte injection
+    - Null byte bypass (legacy PHP): shell.php%00.jpg
+
+--------------------------------------------------
+Section 2.4 – Local File Inclusion (LFI)
+--------------------------------------------------
+
+  Vulnerable pattern:  include($_GET['page'] . '.php');
+  Payload:             ?page=../../etc/passwd
+  Advanced:            PHP filter wrappers, log poisoning
+
+--------------------------------------------------
+Section 2.5 – Authentication & Session Management
+--------------------------------------------------
+
+  JWT attacks, session fixation, cookie theft via XSS,
+  brute force, credential stuffing.
+
+Next Module: Red Team Operations →
+  Access: /academy/content?page=advanced

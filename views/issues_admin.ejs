@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head', {title: 'Admin Panel | Issue Tracker'}) %></head>
+<body>
+
+<%- include('partials/nav', {active: ''}) %>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="section-badge">&#9881; Admin Access</div>
+        <h1 class="page-hero-title">Issue Manager</h1>
+        <p class="page-hero-sub">Review, manage, and resolve all submitted issues from the Cyber Bangla lab environment.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <!-- ── Stats Row ───────────────────────────────────────────────── -->
+        <div class="ia-stats">
+            <div class="ia-stat-card">
+                <div class="ia-stat-icon">&#128196;</div>
+                <div class="ia-stat-value" id="totalCount">–</div>
+                <div class="ia-stat-label">Total Issues</div>
+            </div>
+            <div class="ia-stat-card ia-sec">
+                <div class="ia-stat-icon">&#128272;</div>
+                <div class="ia-stat-value" id="securityCount">–</div>
+                <div class="ia-stat-label">Security Reports</div>
+            </div>
+            <div class="ia-stat-card ia-bug">
+                <div class="ia-stat-icon">&#128027;</div>
+                <div class="ia-stat-value" id="bugCount">–</div>
+                <div class="ia-stat-label">Bug Reports</div>
+            </div>
+            <div class="ia-stat-card ia-feat">
+                <div class="ia-stat-icon">&#9672;</div>
+                <div class="ia-stat-value" id="featureCount">–</div>
+                <div class="ia-stat-label">Feature Requests</div>
+            </div>
+        </div>
+
+        <!-- ── Issues Panel ────────────────────────────────────────────── -->
+        <div class="ia-panel">
+            <div class="ia-panel-header">
+                <span class="ia-panel-title">&#128203; Submitted Issues</span>
+                <div class="ia-panel-actions">
+                    <a href="/issues" class="btn btn-outline btn-sm">&#43; New Issue</a>
+                    <button class="btn btn-outline btn-sm" onclick="loadIssues()">&#8635; Refresh</button>
+                </div>
+            </div>
+            <div class="ia-issues-list" id="issuesList">
+                <div class="ia-empty">Loading issues…</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* ── Issue Tracker – Admin Page ──────────────────────────────────────────── */
+.ia-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+.ia-stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    text-align: center;
+    transition: border-color .2s;
+}
+.ia-stat-card:hover   { border-color: var(--border-normal); }
+.ia-stat-card.ia-sec  { border-color: rgba(255,165,0,.18); }
+.ia-stat-card.ia-bug  { border-color: rgba(255,51,102,.18); }
+.ia-stat-card.ia-feat { border-color: rgba(0,255,204,.15);  }
+
+.ia-stat-icon  { font-size: 1.9rem; margin-bottom: .5rem; }
+.ia-stat-value {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    line-height: 1;
+}
+.ia-stat-card.ia-sec  .ia-stat-value { color: #ffaa44; }
+.ia-stat-card.ia-bug  .ia-stat-value { color: var(--accent-red); }
+.ia-stat-label {
+    font-size: .78rem;
+    color: var(--text-secondary);
+    margin-top: .5rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+/* Panel */
+.ia-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-normal);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.ia-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(0,255,204,.025);
+}
+.ia-panel-title {
+    font-family: var(--font-heading);
+    font-size: .9rem;
+    color: var(--text-primary);
+    letter-spacing: .06em;
+}
+.ia-panel-actions { display: flex; gap: .6rem; }
+
+/* Issue items */
+.ia-issues-list { padding: 0; }
+.ia-issue-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background .2s;
+}
+.ia-issue-item:last-child  { border-bottom: none; }
+.ia-issue-item:hover       { background: rgba(0,255,204,.02); }
+.ia-issue-info             { flex: 1; min-width: 0; }
+.ia-issue-title {
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--text-primary);
+    margin-bottom: .4rem;
+    word-break: break-word;
+}
+.ia-issue-desc {
+    font-size: .88rem;
+    color: var(--text-secondary);
+    margin-bottom: .6rem;
+    line-height: 1.55;
+    word-break: break-word;
+}
+.ia-issue-meta {
+    font-size: .76rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+/* Badges */
+.ia-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+.ia-badge-bug      { background:rgba(255,51,102,.1); color:var(--accent-red);  border:1px solid rgba(255,51,102,.25); }
+.ia-badge-security { background:rgba(255,165,0,.1);  color:#ffaa44;            border:1px solid rgba(255,165,0,.25); }
+.ia-badge-feature  { background:rgba(0,255,204,.07); color:var(--accent-teal); border:1px solid var(--border-normal);}
+.ia-badge-default  { background:rgba(139,163,199,.1);color:var(--text-secondary);border:1px solid rgba(139,163,199,.2); }
+
+/* Delete button */
+.ia-issue-actions { flex-shrink: 0; padding-top: .15rem; }
+.ia-delete-btn {
+    background: transparent;
+    border: 1px solid rgba(255,51,102,.3);
+    color: var(--accent-red);
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: .8rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    transition: all .2s;
+}
+.ia-delete-btn:hover {
+    background: rgba(255,51,102,.1);
+    border-color: var(--accent-red);
+    box-shadow: 0 0 10px rgba(255,51,102,.2);
+}
+.ia-empty {
+    padding: 3.5rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: .9rem;
+}
+</style>
+
+<script>
+    // ── CHALLENGE FLAG ──────────────────────────────────────────────────────
+    // Flag is available in page JavaScript context for XSS exploitation.
+    // Players must inject code here to extract it.
+    var flag = 'CBCTF{dom_xss_executed}';
+    // ───────────────────────────────────────────────────────────────────────
+
+    function getBadgeClass(cat) {
+        if (cat === 'Bug')             return 'ia-badge-bug';
+        if (cat === 'Security')        return 'ia-badge-security';
+        if (cat === 'Feature Request') return 'ia-badge-feature';
+        return 'ia-badge-default';
+    }
+
+    async function loadIssues() {
+        try {
+            var res    = await fetch('/api/issues');
+            var issues = await res.json();
+
+            document.getElementById('totalCount').textContent    = issues.length;
+            document.getElementById('securityCount').textContent = issues.filter(function(i){ return i.category === 'Security'; }).length;
+            document.getElementById('bugCount').textContent      = issues.filter(function(i){ return i.category === 'Bug'; }).length;
+            document.getElementById('featureCount').textContent  = issues.filter(function(i){ return i.category === 'Feature Request'; }).length;
+
+            var list = document.getElementById('issuesList');
+
+            if (issues.length === 0) {
+                list.innerHTML = '<div class="ia-empty">No issues submitted yet. <a href="/issues">Submit the first one →</a></div>';
+                return;
+            }
+
+            list.innerHTML = '';
+            issues.forEach(function(issue) {
+                var item = document.createElement('div');
+                item.className = 'ia-issue-item';
+
+                // ── VULNERABILITY: innerHTML without sanitisation ──────────
+                // issue.title and issue.description are rendered raw.
+                // An XSS payload submitted via /issues will execute here.
+                // ──────────────────────────────────────────────────────────
+                item.innerHTML =
+                    '<div class="ia-issue-info">' +
+                        '<div class="ia-issue-title">' + issue.title + '</div>' +
+                        '<div class="ia-issue-desc">'  + issue.description + '</div>' +
+                        '<div class="ia-issue-meta">' +
+                            '<span class="ia-badge ' + getBadgeClass(issue.category) + '">' + issue.category + '</span>' +
+                            '&#35;' + issue.id + ' &nbsp;&middot;&nbsp; ' +
+                            new Date(issue.createdAt).toLocaleString() +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="ia-issue-actions">' +
+                        '<button class="ia-delete-btn" onclick="deleteIssue(' + issue.id + ')">&#128465; Delete</button>' +
+                    '</div>';
+
+                list.appendChild(item);
+            });
+        } catch(err) {
+            document.getElementById('issuesList').innerHTML =
+                '<div class="ia-empty">Error loading issues: ' + err.message + '</div>';
+        }
+    }
+
+    async function deleteIssue(issueId) {
+        if (!confirm('Delete this issue?')) return;
+        try {
+            var res = await fetch('/api/delete-issue/' + issueId, { method: 'DELETE' });
+            if (res.ok) { loadIssues(); }
+            else { alert('Error deleting issue'); }
+        } catch(err) { alert('Error: ' + err.message); }
+    }
+
+    loadIssues();
+</script>
+
+<%- include('partials/footer') %>
+</body>
+</html>
